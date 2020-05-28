@@ -18,5 +18,7 @@ namespace AmorDoce.Models
 
         public DateTime validade_produto { get; set; }
 
+        public string foto_caminho { get; set; }
+
     }
 }
