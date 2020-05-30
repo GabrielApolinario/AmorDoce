@@ -19,7 +19,7 @@ namespace AmorDoce.Models
             con = new MySqlConnection(ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString);
         }
 
-        public void InsereProdtuos(Produtos p)
+        public void InsereProdutos(Produtos p)
         {
             con.Open();
             MySqlCommand cmd = new MySqlCommand("Insert_produto", con);
@@ -29,10 +29,41 @@ namespace AmorDoce.Models
             cmd.Parameters.AddWithValue("descricao_produto", p.descricao_produto);
             cmd.Parameters.AddWithValue("preco_produto", p.preco_produto);
             cmd.Parameters.AddWithValue("data_validade", p.validade_produto);
+            cmd.Parameters.AddWithValue("foto_caminho", p.foto_caminho);
+
 
             cmd.ExecuteNonQuery();
             con.Close();
 
+        }
+
+        public void ExcluirProdutos(Produtos p)
+        {
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("Delete_produto", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("id_produto", p.id_produto);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public void EditaProdutos(Produtos p)
+        {
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("Update_produto", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("proc_id_produto", p.id_produto);
+            cmd.Parameters.AddWithValue("novo_nome_produto", p.nome_produto);
+            cmd.Parameters.AddWithValue("novo_descricao_produto", p.descricao_produto);
+            cmd.Parameters.AddWithValue("novo_preco_produto", p.preco_produto);
+            cmd.Parameters.AddWithValue("novo_data_validade", p.validade_produto);
+            
+
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
         public MySqlDataReader RetornaComando(string query)
@@ -62,7 +93,12 @@ namespace AmorDoce.Models
             {
                 var tempProd = new Produtos()
                 {
+                    id_produto = Convert.ToInt32(retorno["id_produto"]),
                     nome_produto = retorno["nome_produto"].ToString(),
+                    descricao_produto = retorno["descricao_produto"].ToString(),
+                    validade_produto = Convert.ToDateTime(retorno["data_validade"].ToString()),
+                    preco_produto = Convert.ToDouble(retorno["preco_produto"]),
+
                 };
             prod.Add(tempProd);
             }

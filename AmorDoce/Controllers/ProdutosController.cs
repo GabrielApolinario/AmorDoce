@@ -38,9 +38,10 @@ namespace AmorDoce.Controllers
                 descricao_produto = p.descricao_produto,
                 preco_produto = p.preco_produto,
                 validade_produto = p.validade_produto,
+                foto_caminho = p.foto_caminho,
             };
 
-            Bd.InsereProdtuos(prod);
+            Bd.InsereProdutos(prod);
 
             return View();
         }
@@ -57,9 +58,40 @@ namespace AmorDoce.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Editar(Produtos p)
+        {
+            Produtos prod = new Produtos
+            {
+                id_produto = p.id_produto,
+                nome_produto = p.nome_produto,
+                descricao_produto = p.descricao_produto,
+                preco_produto = p.preco_produto,
+                validade_produto = p.validade_produto,
+            };
+
+            Bd.EditaProdutos(prod);
+
+            return RedirectToAction("Consultar");
+        }
+
         public ActionResult Excluir()
         {
             return View();
+        
+        }
+
+
+        [HttpPost]
+        public ActionResult Excluir(Produtos p)
+        {
+            Produtos prod = new Produtos
+            {
+                id_produto = p.id_produto,
+            };
+
+            Bd.ExcluirProdutos(prod);
+            return RedirectToAction("Consultar");
         }
         
     }
