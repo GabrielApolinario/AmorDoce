@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -16,7 +17,9 @@ namespace AmorDoce.Models
         public string descricao_produto { get; set; }
         [DisplayName("Preço")]
         public double preco_produto { get; set; }
+        
         [DisplayName("Validade")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime validade_produto { get; set; }
         [DisplayName("Selecione uma imagem")]
         public string foto_caminho { get; set; }
