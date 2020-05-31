@@ -4,6 +4,7 @@
     ViewBag.Title = "Consultar";
 }
 
+
 @Styles.Render("~/Content/css/Site2.css")
 <table class="table mt-5">
     <thead class="thead-grey">
@@ -21,10 +22,10 @@
                     @Html.DisplayFor(modelItem => item.nome_produto)
                 </td>
                 <td>
-                    <button class="btn btn-editar"><a> @Html.ActionLink("Editar", "Editar", new { /* id=item.PrimaryKey */ })</a></button>
+                    <button class="btn btn-editar"><a> @Html.ActionLink("Editar", "Editar", new { item.id_produto })</a></button>
                 </td>
                 <td>
-                    <button class="btn btn-excluir"><a>@Html.ActionLink("Excluir", "Excluir", new { /* id=item.PrimaryKey */ })</a></button>
+                    <button class="btn btn-excluir"><a>@Html.ActionLink("Excluir", "Excluir", new { item.id_produto })</a></button>
                 </td>
             </tr>
         }

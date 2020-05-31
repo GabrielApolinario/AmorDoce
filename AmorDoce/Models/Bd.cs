@@ -43,7 +43,7 @@ namespace AmorDoce.Models
             MySqlCommand cmd = new MySqlCommand("Delete_produto", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("id_produto", p.id_produto);
+            cmd.Parameters.AddWithValue("del_id_produto", p.id_produto);
 
             cmd.ExecuteNonQuery();
             con.Close();
