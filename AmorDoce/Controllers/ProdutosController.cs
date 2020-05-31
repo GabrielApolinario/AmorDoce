@@ -60,7 +60,7 @@ namespace AmorDoce.Controllers
 
             Bd.InsereProdutos(prod);
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
 
