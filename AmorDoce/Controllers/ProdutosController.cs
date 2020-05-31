@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AmorDoce.Models;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using System.Web.UI.WebControls;
 
 namespace AmorDoce.Controllers
 {
@@ -75,14 +76,7 @@ namespace AmorDoce.Controllers
             return RedirectToAction("Consultar");
         }
 
-        public ActionResult Excluir()
-        {
-            return View();
-        
-        }
 
-
-        [HttpPost]
         public ActionResult Excluir(Produtos p)
         {
             Produtos prod = new Produtos
@@ -91,6 +85,7 @@ namespace AmorDoce.Controllers
             };
 
             Bd.ExcluirProdutos(prod);
+
             return RedirectToAction("Consultar");
         }
         
