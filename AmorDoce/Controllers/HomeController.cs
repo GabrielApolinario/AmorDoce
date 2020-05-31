@@ -16,6 +16,7 @@ namespace AmorDoce.Controllers
             var todosProdutos = listaProdutos.ProdutosIndex();
 
             var totalProdutos = todosProdutos.Count();
+
             if (totalProdutos == 0)
             {
                 ViewBag.SemProdutos = "Os produtos cadastrados serão exibidos aqui";
