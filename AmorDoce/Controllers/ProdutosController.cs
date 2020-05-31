@@ -46,7 +46,7 @@ namespace AmorDoce.Controllers
             string UploadPath = Server.MapPath("~/Imagens/");
 
             p.foto_caminho = UploadPath + FileName;
-  
+
             p.imagem.SaveAs(p.foto_caminho);
 
             Produtos prod = new Produtos
@@ -62,7 +62,6 @@ namespace AmorDoce.Controllers
 
             return View();
         }
-
 
         public ActionResult Consultar()
         {
