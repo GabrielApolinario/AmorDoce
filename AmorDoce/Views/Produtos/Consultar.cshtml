@@ -4,24 +4,31 @@
     ViewBag.Title = "Consultar";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nome_produto)
-        </th>      
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nome_produto)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { item.id_produto }) |
-            @Html.ActionLink("Excluir", "Excluir", new { item.id_produto })
-        </td>
-    </tr>
-}
+@Styles.Render("~/Content/css/Site2.css")
+<table class="table mt-5">
+    <thead class="thead-grey">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.nome_produto)</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome_produto)
+                </td>
+                <td>
+                    <button class="btn btn-editar"><a> @Html.ActionLink("Editar", "Editar", new { item.id_produto })</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-excluir"><a>@Html.ActionLink("Excluir", "Excluir", new { item.id_produto })</a></button>
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

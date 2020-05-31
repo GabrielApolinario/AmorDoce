@@ -1,0 +1,12 @@
+﻿body {
+}
+.btn-editar {
+    color: #fff;
+    background-color: #f44336;
+    border: none;
+}
+.btn-excluir {
+    color: #fff;
+    background-color:#43a047;
+    border: none;
+}
