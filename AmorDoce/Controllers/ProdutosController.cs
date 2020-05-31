@@ -19,14 +19,6 @@ namespace AmorDoce.Controllers
 
         Bd Bd = new Bd();
 
-
-        public ActionResult Index()
-        {
-            //Criar comandos para chamar procedure
-
-            return View();
-        }
-
         public ActionResult Cadastro()
         {
             return View();
@@ -48,6 +40,8 @@ namespace AmorDoce.Controllers
             p.foto_caminho = UploadPath + FileName;
 
             p.imagem.SaveAs(p.foto_caminho);
+
+            p.foto_caminho = "~/Imagens/" + FileName;
 
             Produtos prod = new Produtos
             {

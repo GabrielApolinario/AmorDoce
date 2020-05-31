@@ -21,12 +21,10 @@
                     @Html.ActionLink("Amor Doce", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Cadastrar doce", "Cadastro", "Produtos", new { @class = "nav-link" })
-
+                    @Html.ActionLink("Cadastrar doce", "Cadastro", "Produtos", new { area = "" }, new { @class = "nav-link" })  
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Consultar produtos", "Consultar", "Produtos", new { @class = "nav-link" })
-
+                    @Html.ActionLink("Consultar doces", "Consultar", "Produtos", new { area = "" }, new { @class = "nav-link" })
                 </li>
             </ul>
         </div>
@@ -65,7 +63,7 @@
             </div>
         </div>
         <div class="footer-copyright text-center py-3">
-            <p>© 2019 Copyright: Amor Doce - Todos os direitos reservados</p>
+            <p>© 2020 Copyright: Amor Doce - Todos os direitos reservados</p>
         </div>
      
     </footer>

@@ -1,86 +1,47 @@
-﻿@{
+﻿@model IEnumerable<AmorDoce.Models.Produtos>
+
+@using AmorDoce.Models
+
+@{
     ViewBag.Title = "Home Page";
 }
-    
-        <header class="justify-content-center align-items-center">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="jumbotron">
-                    <h1 class="jumbotron-heading">Bem-vindo à Amor Doce</h1>
-                    <p class="jumbotron-text mt-3">Lorem ipsum dolor sit amest, consectetur adipiscing elit. Aenean ex mauris, sagittis ut maximus et, placerat et tortor. Mauris consectetur nulla in porttitor dapibus.</p>
-                </div>
-            </div>
-        </header>
-  
+
+<header class="justify-content-center align-items-center">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="jumbotron">
+            <h1 class="jumbotron-heading">Bem-vindo à Confeitaria Amor Doce</h1>
+            
+        </div>
+    </div>
+</header>
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-12 text-center">
             <h2 class="title">Nossos Serviços</h2>
             <p class="mt-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet posuere lectus. Nam ac ullamcorper risus. Mauris a erat vitae lectus dapibus mollis vitae eu nibh.
+                Vendemos todos os tipos de doces que você possa imaginar!
             </p>
-        </div>
-
-        <div class="col-md-4 mt-5">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/image/bolo.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="title text-center">Card title</h5>
-                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    
+        </div> 
+        @if(ViewBag.SemProdutos == "") { 
+        foreach (var item in Model)
+        {
+            <div class="col-md-4 mt-5">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@Url.Content(item.foto_caminho)" alt="@Html.DisplayFor(modelItem => item.descricao_produto)" style="width:286px; height: 190px;">
+                    <div class="card-body">
+                        <span class="title text-center">@Html.DisplayFor(modelItem => item.nome_produto)</span>
+                        <p class="card-text text-center">@Html.DisplayFor(modelItem => item.descricao_produto)</p>                      
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 mt-5">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/image/bolo.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="title text-center">Card title</h5>
-                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   
-                </div>
+            }
+        }
+        else
+        {
+            <div style="text-align: center; width: 100%;">
+                <h2>@ViewBag.SemProdutos</h2>
             </div>
-        </div>
-        <div class="col-md-4 mt-5">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/image/bolo.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="title text-center">Card title</h5>
-                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-5">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/image/bolo.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="title text-center">Card title</h5>
-                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-5">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/image/bolo.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="title text-center">Card title</h5>
-                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-5">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="~/image/bolo.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="title text-center">Card title</h5>
-                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    
-                </div>
-            </div>
-        </div>
-
-    </div>
+        }
+    </div>   
 </div>

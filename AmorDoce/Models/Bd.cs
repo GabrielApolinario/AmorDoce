@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -97,7 +98,7 @@ namespace AmorDoce.Models
                     nome_produto = retorno["nome_produto"].ToString(),
                     descricao_produto = retorno["descricao_produto"].ToString(),
                     validade_produto = Convert.ToDateTime(retorno["data_validade"].ToString()),
-                    preco_produto = Convert.ToDouble(retorno["preco_produto"]),
+                    preco_produto = Convert.ToDouble(retorno["preco_produto"]),                   
 
                 };
             prod.Add(tempProd);
@@ -106,9 +107,38 @@ namespace AmorDoce.Models
             retorno.Close();
             return prod;
         }
+        public List<Produtos> ListaProdutosIndex(MySqlDataReader retorno)
+        {
+            var prod = new List<Produtos>();
+
+            while (retorno.Read())
+            {
+                var tempProd = new Produtos()
+                {
+                    nome_produto = retorno["nome_produto"].ToString(),
+                    descricao_produto = retorno["descricao_produto"].ToString(),
+                    foto_caminho = retorno["foto_caminho"].ToString(),
+
+                };              
+
+                prod.Add(tempProd);
+            }
+
+            retorno.Close();
+            return prod;
+        }
+
+        public List<Produtos> ProdutosIndex()
+        {
+            con.Open();
+            var query = "Select_Produto_Home";
+            var retorno = RetornaComando(query);
+            return ListaProdutosIndex(retorno);
+        }
 
         public void Dispose()
         {
+            con.Dispose();
             con.Close();
         }
 
