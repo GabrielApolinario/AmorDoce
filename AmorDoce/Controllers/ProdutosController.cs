@@ -7,6 +7,9 @@ using AmorDoce.Models;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System.Web.UI.WebControls;
+using System.IO;
+using static System.Net.WebRequestMethods;
+using System.Configuration;
 
 namespace AmorDoce.Controllers
 {
@@ -33,6 +36,19 @@ namespace AmorDoce.Controllers
         [HttpPost]
         public ActionResult Cadastro(Produtos p)
         {
+
+            string FileName = Path.GetFileNameWithoutExtension(p.imagem.FileName);
+
+            string FileExtension = Path.GetExtension(p.imagem.FileName);
+
+            FileName = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + FileName.Trim() + FileExtension;
+
+            string UploadPath = Server.MapPath("~/Imagens/");
+
+            p.foto_caminho = UploadPath + FileName;
+  
+            p.imagem.SaveAs(p.foto_caminho);
+
             Produtos prod = new Produtos
             {
                 nome_produto = p.nome_produto,
@@ -46,6 +62,7 @@ namespace AmorDoce.Controllers
 
             return View();
         }
+
 
         public ActionResult Consultar()
         {

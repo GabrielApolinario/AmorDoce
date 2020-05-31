@@ -17,12 +17,14 @@ namespace AmorDoce.Models
         public string descricao_produto { get; set; }
         [DisplayName("Preço")]
         public double preco_produto { get; set; }
-        
+
         [DisplayName("Validade")]
-        
+
         public DateTime validade_produto { get; set; }
-        [DisplayName("Selecione uma imagem")]
         public string foto_caminho { get; set; }
+
+        [DisplayName("Imagem do bolo")]
+        public HttpPostedFileBase imagem { get;set;}
 
     }
 }
