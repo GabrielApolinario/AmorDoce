@@ -19,7 +19,7 @@ namespace AmorDoce.Models
         public double preco_produto { get; set; }
         
         [DisplayName("Validade")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        
         public DateTime validade_produto { get; set; }
         [DisplayName("Selecione uma imagem")]
         public string foto_caminho { get; set; }
